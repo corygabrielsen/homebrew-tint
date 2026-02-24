@@ -1,0 +1,32 @@
+name: Update formula
+
+on:
+  repository_dispatch:
+    types: [formula-update]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Version (e.g. 0.13.0)"
+        required: true
+      sha256:
+        description: "SHA-256 checksum of the tint binary"
+        required: true
+
+concurrency:
+  group: formula-update
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v6
+      - name: Update formula
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          scripts/update-formula.sh \
+            "${{ github.event.client_payload.version || inputs.version }}" \
+            "${{ github.event.client_payload.sha256 || inputs.sha256 }}"
