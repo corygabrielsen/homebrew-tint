@@ -1,8 +1,8 @@
 class Tint < Formula
   desc "Terminal background color picker"
   homepage "https://github.com/corygabrielsen/tint"
-  url "https://github.com/corygabrielsen/tint/releases/download/v0.20.0/tint"
-  sha256 "89c11ed749ca92bab2ad05dcea24abfaa6a3b6cbe6da809b37e85c9f6f10e15a"
+  url "https://github.com/corygabrielsen/tint/releases/download/v0.20.1/tint"
+  sha256 "9e2979865acbc78d52398e4494c4a39e966a8634dbf4236cb55b26076915a3a3"
   license "MIT"
 
   def install
